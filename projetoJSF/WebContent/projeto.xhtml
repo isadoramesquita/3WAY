@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</h:head>
+<h:body>
+	<div class="jumbotron text-center">
+		<h1>Isadora Mesquita</h1>
+		<p>Meu primeiro JSF!</p>
+	</div>
+
+	<h:form>
+		<div class="container">
+			<h2>Nome completo</h2>
+			<table class="table table-bordered">
+				<thead>
+					<h:outputText value="#{pessoa.nomeCompleto}" />
+				</thead>
+			</table>
+		</div>
+		<div class="container">
+			<h2>Idade</h2>
+			<thead>
+				<h:outputText value="#{pessoa.idade}" />
+			</thead>
+		</div>
+		<div class="container">
+			<h2>Sexo</h2>
+			<thead>
+				<h:outputText value="#{pessoa.sexo}" />
+			</thead>
+		</div>
+
+
+	</h:form>
+</h:body>
+
+</html>
