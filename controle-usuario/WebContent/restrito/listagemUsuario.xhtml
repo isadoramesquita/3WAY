@@ -1,0 +1,74 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+</h:head>
+
+<h:body>
+		<ui:composition template="/restrito/template/layout.xhtml">
+			<ui:define name="content">
+	<center>
+		<h2>
+			<h:outputText value="Lista de usuários cadastrados" />
+		</h2>
+	</center>
+	<h:form id="usuarioForm">
+				<h:dataTable id="usuarioTable" value="#{usuarioManagedBean.usuarioListDb}" var="usuario"
+					styleClass="table table-striped table-bordered tableUpdated">
+					<h:column>
+						<f:facet name="header">Id</f:facet>
+						<h:outputText value="#{usuario.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nome</f:facet>
+						<h:outputText value="#{usuario.nomeUsuario}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Matrícula</f:facet>
+						<h:outputText value="#{usuario.matricula}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Endereço</f:facet>
+						<h:outputText value="#{usuario.endereco.rua}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Endereço</f:facet>
+						<h:commandButton action="#{enderecoManagedBean.paginaEndereco(usuario)}"
+						rendered="#{usuario.endereco.rua eq null}"
+						value="Incluir Endereço" styleClass="btn btn-primary" >
+						</h:commandButton>
+						<h:commandButton action="#{enderecoManagedBean.paginaEndereco(usuario)}"
+						rendered="#{usuario.endereco.rua ne null}"
+						value="Alterar Endereço" styleClass="btn btn--primary" >
+						</h:commandButton>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Senha</f:facet>
+						<h:outputText value="#{usuario.senha}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Update</f:facet>
+						<h:commandButton action="#{usuarioManagedBean.paginaEditar(usuario)}"
+							value="Atualizar" styleClass="btn btn-primary">
+						</h:commandButton>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Delete</f:facet>
+						<h:commandButton action="#{usuarioManagedBean.exlcluirUsuarioDb(usuario)}"
+							value="Deletar" styleClass="btn btn-danger" />
+					</h:column>
+				</h:dataTable>
+				<center>
+					<h:commandButton action="novoUsuario.xhtml?faces-redirect=true"
+						value="Adicionar novo Usuário" styleClass="btn btn-success btnSpace" />
+				</center>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>
